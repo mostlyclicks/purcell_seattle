@@ -7,6 +7,32 @@ module.exports = {
     title: `Purcell Communications`,
     siteUrl: `https://www.yourdomain.tld`,
     author: `mostlyClicks, LLC`,
+    menuLinks: [
+      {
+        name: "Home",
+        link: "/",
+      },
+      {
+        name: "What We Do",
+        link: "/what-we-do",
+      },
+      {
+        name: "Why Use Us",
+        link: "/why-use-us",
+      },
+      {
+        name: "Who We Are",
+        link: "/who-we-are",
+      },
+      {
+        name: "What People Say",
+        link: "/what-people-say",
+      },
+      {
+        name: "Contact Us",
+        link: "/contact-us",
+      },
+    ],
   },
   plugins: [
     "gatsby-plugin-styled-components",
