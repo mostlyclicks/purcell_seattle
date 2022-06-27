@@ -15,7 +15,7 @@ const IndexPage = ({data}) => {
       {RichText.render(HomeData.body_content.raw)}
     </Layout>
   )
-}
+} 
 
 export default IndexPage
 

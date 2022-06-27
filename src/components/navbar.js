@@ -19,7 +19,7 @@ const Navbar = ({menuLinks}) => {
         <button onClick={() => setWebNavOpen(!webNavOpen)}>clickme</button>
         <NavLinks links={menuLinks} />
       </WebNav>
-
+      
     </div>
   );
 
@@ -36,6 +36,8 @@ const DesktopNav = styled.div`
       margin: 0;
       padding: 0;
       list-style: none;
+      font-family:'Roboto Slab', serif;
+      font-weight:bold;
     }
     ul {
       display: flex;
