@@ -37,7 +37,7 @@ const StyledHeader = styled.header`
   justify-content:space-between;
   align-items:center;
   background-color: #f2f2df;
-  width:100%;
+  height:150px;
   padding:1.5rem;
   h1 {display:none;}
   img {width:100px;}
