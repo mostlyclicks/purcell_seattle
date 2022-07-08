@@ -1,4 +1,5 @@
 import React from 'react'
+import { StaticQuery, graphql } from "gatsby";
 import styled from 'styled-components'
 import './layout.css'
 import Header from './header'
@@ -7,18 +8,30 @@ import Footer from './footer'
 
 
 
-const Layout = ({children}) => {
-  return (
-    <StyledContainer>
-      <Header />
-      <StyledMain>
-        <h1>Layout</h1>
-        {children}
-      </StyledMain>
-      <Footer />
-    </StyledContainer>
-  );
-}
+const Layout = ({ children }) => (
+  <StaticQuery
+    query={graphql`
+      query SiteMetaQuery {
+        site {
+          siteMetadata {
+            title
+            menuLinks {
+              link
+              name
+            }
+          }
+        }
+      }
+    `}
+    render={(data) => (
+      <StyledContainer>
+        <Header links={data.site.siteMetadata.menuLinks} />
+        <StyledMain>{children}</StyledMain>
+        <Footer footerLinks={data.site.siteMetadata.menuLinks} />
+      </StyledContainer>
+    )}
+  />
+);
 
 export default Layout
 
@@ -26,14 +39,19 @@ export default Layout
 const StyledContainer = styled.div`
   display:grid;
   grid-gap:1em;
-  background-color:#efefef;
   min-height:100vh;
-  border:1px solid purple;
   
+  
+  
+
 `
 
 const StyledMain = styled.main`
-  
-  border: 1px solid red;
   min-height: 100%;
+  min-height: 80vh;
+
+  @media (min-width: 768px) {
+    width: 960px;
+    margin: 0 auto;
+  }
 `;

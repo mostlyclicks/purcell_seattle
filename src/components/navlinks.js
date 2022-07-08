@@ -15,5 +15,5 @@ const NavLinks = ({links}) => {
   );
 }
 
-       export default NavLinks
+export default NavLinks
  
