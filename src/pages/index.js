@@ -12,7 +12,7 @@ const IndexPage = ({data}) => {
     <Layout>
       <SEO title={HomeData.page_title} description={HomeData.meta_description} />
       <h1>{HomeData.title.text}</h1>
-      {RichText.render(HomeData.body_content.raw)}
+      {RichText.render(HomeData.body_content.raw)}  
     </Layout>
   )
 } 
