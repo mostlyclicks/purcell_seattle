@@ -1,5 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 const Testimonials = () => {
 
@@ -15,6 +16,26 @@ const Testimonials = () => {
                 uid
                 data {
                   page_title
+                  testimonial_image {
+                    alt
+                    fluid(maxHeight: 400) {
+                      src
+                    }
+                  }
+                  company {
+                    text
+                  }
+                  job_title {
+                    text
+                  }
+                  meta_description
+                  page_title
+                  testimonial_text {
+                    text
+                  }
+                  testimonial_title {
+                    richText
+                  }
                 }
               }
             }
@@ -22,20 +43,27 @@ const Testimonials = () => {
         }
       `}
       render={(data) => {
-
-        const testimonialData = data.allPrismicTestimonial.edges
+        const testimonialData = data.allPrismicTestimonial.edges;
 
         return (
           <div>
             {testimonialData.map((testimonial) => {
+              const item = testimonial.node;
+              const image = getImage(item.data.testimonial_image.fluid.src);
 
-              const item = testimonial.node
+              return (
+                <div>
+                  <h1>{item.data.page_title}</h1>
 
-              return <p>{item.data.page_title} {item.uid}</p>;
+                  <img
+                    src={item.data.testimonial_image.fluid.src}
+                    alt={item.data.testimonial_image.alt}
+                  />
+                </div>
+              );
             })}
           </div>
         );
-
       }}
     />
   );
