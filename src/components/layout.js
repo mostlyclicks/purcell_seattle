@@ -40,7 +40,8 @@ const StyledContainer = styled.div`
   display:grid;
   grid-gap:1em;
   min-height:100vh;
-  
+  width:100%;
+ 
   
   
 
@@ -49,6 +50,7 @@ const StyledContainer = styled.div`
 const StyledMain = styled.main`
   min-height: 100%;
   min-height: 80vh;
+  
 
   @media (min-width: 768px) {
     width: 960px;
