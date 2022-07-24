@@ -54,6 +54,9 @@ const Testimonials = () => {
               return (
                 <div>
                   <h1>{item.data.page_title}</h1>
+                  <p>{item.data.company.text}</p>
+                  <p>{item.data.job_title.text}</p>
+                  <p>{item.data.testimonial_text.text}</p>
 
                   <img
                     src={item.data.testimonial_image.fluid.src}
