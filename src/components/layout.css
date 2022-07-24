@@ -2,15 +2,20 @@ html, body {
   background-color: #f2f2df;
   margin:0;
   padding:0;
-  font-family:'Source Sans', sans-serif;
+  font-family:'Source Sans Pro', sans-serif;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6, caption {
   font-family: 'Roboto Slab', serif;
+}
+
+h2,h3 {
+  margin:0;
 }
 
 p, ul, li {
   font-family: 'Source Sans Pro', sans-serif;
-  line-height:1.75em;
+  line-height:1.55em;
   color:rgba(0,0,0,.7);
 }
+

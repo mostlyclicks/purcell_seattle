@@ -1,8 +1,10 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { RichText } from "prismic-reactjs";
+import styled from 'styled-components';
 
-const Testimonials = () => {
+
+const Testimonials = (props) => {
 
  
 
@@ -18,7 +20,7 @@ const Testimonials = () => {
                   page_title
                   testimonial_image {
                     alt
-                    fluid(maxHeight: 400) {
+                    fluid(maxWidth: 400) {
                       src
                     }
                   }
@@ -31,10 +33,14 @@ const Testimonials = () => {
                   meta_description
                   page_title
                   testimonial_text {
-                    text
+                    richText
+                    raw
                   }
                   testimonial_title {
-                    richText
+                    text
+                  }
+                  name {
+                    text
                   }
                 }
               }
@@ -47,22 +53,36 @@ const Testimonials = () => {
 
         return (
           <div>
-            {testimonialData.map((testimonial) => {
+            {testimonialData.map((testimonial, index) => {
               const item = testimonial.node;
-              const image = getImage(item.data.testimonial_image.fluid.src);
 
               return (
-                <div>
-                  <h1>{item.data.page_title}</h1>
-                  <p>{item.data.company.text}</p>
-                  <p>{item.data.job_title.text}</p>
-                  <p>{item.data.testimonial_text.text}</p>
+                <TestimonialWrapper
+                  style={{
+                    backgroundColor: index % 2 ? "rgba(0,0,0,.04)" : "",
+                    padding:'3rem'
+                  }}
+                >
+                  <StyledTestimonial>
+                    <h2>{item.data.company.text}</h2>
+                    <h3></h3>
 
-                  <img
-                    src={item.data.testimonial_image.fluid.src}
-                    alt={item.data.testimonial_image.alt}
-                  />
-                </div>
+                    <RichText render={item.data.testimonial_text.raw} />
+                  </StyledTestimonial>
+                  <StyledImage
+                    style={{
+                      order: index % 2 ? "0" : "-1",
+                    }}
+                  >
+                    <img
+                      src={item.data.testimonial_image.fluid.src}
+                      alt={item.data.testimonial_image.alt}
+                    />
+                    <caption>
+                      {item.data.name.text} - {item.data.job_title.text}
+                    </caption>
+                  </StyledImage>
+                </TestimonialWrapper>
               );
             })}
           </div>
@@ -73,3 +93,24 @@ const Testimonials = () => {
 }
 
 export default Testimonials
+
+const TestimonialWrapper = styled.section`
+  display:flex;
+  gap:30px;
+  margin-bottom:20px;
+ 
+
+
+`
+
+
+const StyledTestimonial = styled.div`
+  
+
+`;
+const StyledImage = styled.div`
+  caption {
+    display:block;
+    padding:1em;
+  }
+`;
